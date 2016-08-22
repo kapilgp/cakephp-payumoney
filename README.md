@@ -20,17 +20,17 @@ Download it and move into app\Vendor
   $txnId = $objPayu->randomTxnId();
   
   //Payu settings
-  $payu['txnid'] = $txnId;
+  $payu['txnid'] = $txnId;                                                  //Transaction Id
   $payu['firstname'] = $this->Auth->User('User.name');
   $payu['email'] = $this->Auth->User('User.email');
   $payu['phone'] = $this->Auth->User('User.mobile');
   
-  $payu['productinfo'] = 'Booking - '. $booking['Booking']['code'];
+  $payu['productinfo'] = 'Booking - '. $booking['Booking']['code'];         // Product Info
   
-  $payu['surl'] = Router::url('/bookings/status/pass/'.$bookingId, true);
-  $payu['furl'] = Router::url('/bookings/status/fail/'.$bookingId, true);
-  $payu['curl'] = Router::url('/bookings/status/cancel/'.$bookingId, true);
-  $payu['amount'] = 10;
+  $payu['surl'] = Router::url('/bookings/status/pass/'.$bookingId, true);   // Success Url
+  $payu['furl'] = Router::url('/bookings/status/fail/'.$bookingId, true);   // Fail Url
+  $payu['curl'] = Router::url('/bookings/status/cancel/'.$bookingId, true); // Cancel Url
+  $payu['amount'] = 10;                                                     // Amount
   
   //Call Vendor function for send to payu
   $objPayu->send($payu);
